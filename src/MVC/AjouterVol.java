@@ -23,10 +23,8 @@ public class AjouterVol extends javax.swing.JPanel {
     private NoyauFonctionnel nf;
     private TableVol tableVol;
     private comboAero cbAvion;
-    //private libVolDocumentListener libVolListener;
     private boolean tarifCorrect;
     private TarifDocumentListener tarifListener;
-    //private dateDDocumentListener libVolListener;
     //private dateADocumentListener tarifListener;
     //private heureDDocumentListener libVolListener;
     //private heureADocumentListener tarifListener;
@@ -88,6 +86,7 @@ public class AjouterVol extends javax.swing.JPanel {
                 tarifListener.verifierTarif(txt_Tarif.getText());
             }
         });
+
     }
 
     private void setTarifCorrect(boolean tCorrect) {
@@ -144,6 +143,7 @@ public class AjouterVol extends javax.swing.JPanel {
         }
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -167,12 +167,18 @@ public class AjouterVol extends javax.swing.JPanel {
         cb_AeroA = new javax.swing.JComboBox<>();
         txtf_DateD = new javax.swing.JFormattedTextField();
         txtf_DateA = new javax.swing.JFormattedTextField();
-        txtf_HD = new javax.swing.JFormattedTextField();
-        txtf_HA = new javax.swing.JFormattedTextField();
         btn_AjouterVol = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_Vol = new javax.swing.JTable();
         err_tarif = new javax.swing.JLabel();
+        spin_hd = new javax.swing.JSpinner();
+        jLabel1 = new javax.swing.JLabel();
+        spin_md = new javax.swing.JSpinner();
+        spin_ha = new javax.swing.JSpinner();
+        spin_ma = new javax.swing.JSpinner();
+        jLabel2 = new javax.swing.JLabel();
+        err_HD = new javax.swing.JLabel();
+        err_HA = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(900, 450));
 
@@ -205,10 +211,6 @@ public class AjouterVol extends javax.swing.JPanel {
 
         txtf_DateA.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
 
-        txtf_HD.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-
-        txtf_HA.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-
         btn_AjouterVol.setText("Ajouter");
         btn_AjouterVol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -232,6 +234,18 @@ public class AjouterVol extends javax.swing.JPanel {
         err_tarif.setForeground(new java.awt.Color(255, 153, 0));
         err_tarif.setText("Le tarif doit etre superieure a 0");
 
+        spin_hd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jLabel1.setText(":");
+
+        jLabel2.setText(":");
+
+        err_HD.setForeground(new java.awt.Color(255, 153, 0));
+        err_HD.setText("L'heure de depart est incorrect");
+
+        err_HA.setForeground(new java.awt.Color(255, 153, 0));
+        err_HA.setText("L'heure d'arrivee est incorrect");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -244,7 +258,7 @@ public class AjouterVol extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btn_AjouterVol))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -278,15 +292,32 @@ public class AjouterVol extends javax.swing.JPanel {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(err_tarif)
                                             .addComponent(txt_Tarif, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbl_HD)
-                            .addComponent(lbl_HA))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtf_HD, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtf_HA, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(115, 115, 115)))
+                            .addComponent(err_HD)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lbl_HD)
+                                    .addComponent(lbl_HA))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(5, 5, 5)
+                                        .addComponent(spin_ha, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(spin_hd, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(spin_md, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(spin_ma, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addComponent(err_HA)))
+                        .addGap(34, 34, 34)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -307,27 +338,37 @@ public class AjouterVol extends javax.swing.JPanel {
                     .addComponent(lbl_DateD)
                     .addComponent(cb_AeroD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtf_DateD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtf_HD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                    .addComponent(jLabel1)
+                    .addComponent(spin_md, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spin_hd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
+                .addComponent(err_HD)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_AeroA)
                     .addComponent(lbl_DateA)
                     .addComponent(cb_AeroA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtf_DateA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtf_HA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_HA))
-                .addGap(35, 35, 35)
+                    .addComponent(lbl_HA)
+                    .addComponent(spin_ma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(spin_ha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(err_HA)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(btn_AjouterVol)
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_AjouterVolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AjouterVolActionPerformed
 
         float tarif = Float.valueOf(txt_Tarif.getText());
-        nf.ajouterVol(txt_LibVol.getText(), txtf_DateD.getText(), txtf_DateA.getText(), txtf_HD.getText(), txtf_HA.getText(), tarif, String.valueOf(cb_AeroD.getSelectedItem()), String.valueOf(cb_AeroA.getSelectedItem()));
+        String heureD = spin_hd.getValue()+ ":" + spin_md.getValue();
+        String heureA = spin_ha.getValue()+ ":" + spin_ma.getValue();
+        nf.ajouterVol(txt_LibVol.getText(), txtf_DateD.getText(), txtf_DateA.getText(), heureD, heureA, tarif, String.valueOf(cb_AeroD.getSelectedItem()), String.valueOf(cb_AeroA.getSelectedItem()));
     }//GEN-LAST:event_btn_AjouterVolActionPerformed
 
     private void cb_AeroDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_AeroDActionPerformed
@@ -340,7 +381,11 @@ public class AjouterVol extends javax.swing.JPanel {
     private javax.swing.JButton btn_AjouterVol;
     private javax.swing.JComboBox<String> cb_AeroA;
     private javax.swing.JComboBox<String> cb_AeroD;
+    private javax.swing.JLabel err_HA;
+    private javax.swing.JLabel err_HD;
     private javax.swing.JLabel err_tarif;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_AeroA;
     private javax.swing.JLabel lbl_AeroD;
@@ -350,12 +395,14 @@ public class AjouterVol extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_HD;
     private javax.swing.JLabel lbl_LibVol;
     private javax.swing.JLabel lbl_Tarif;
+    private javax.swing.JSpinner spin_ha;
+    private javax.swing.JSpinner spin_hd;
+    private javax.swing.JSpinner spin_ma;
+    private javax.swing.JSpinner spin_md;
     private javax.swing.JTable tbl_Vol;
     private javax.swing.JTextField txt_LibVol;
     private javax.swing.JTextField txt_Tarif;
     private javax.swing.JFormattedTextField txtf_DateA;
     private javax.swing.JFormattedTextField txtf_DateD;
-    private javax.swing.JFormattedTextField txtf_HA;
-    private javax.swing.JFormattedTextField txtf_HD;
     // End of variables declaration//GEN-END:variables
 }

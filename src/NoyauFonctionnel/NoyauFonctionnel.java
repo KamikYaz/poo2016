@@ -593,6 +593,19 @@ public class NoyauFonctionnel {
         }
         return t;
     }
+    
+    //FOnction qui verifie l'heure
+    public boolean verifHeure(String heure, String minute){
+        boolean t;
+        int h = Integer.parseInt(heure);
+        int m = Integer.parseInt(minute);
+        if(h < 0 && h >= 24 && m < 0 && m > 59){
+            t = false;
+        }else{
+            t = true;
+        }
+        return t;
+    }
 
     public void bdd() {
         //Insertion des aeroports
