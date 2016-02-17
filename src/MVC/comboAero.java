@@ -22,7 +22,6 @@ public class comboAero extends DefaultComboBoxModel implements VueGestionVol{
     }
 
     
-    
     @Override
     public void notifyFromModel(NoyauFonctionnel model) {
         this.fireContentsChanged(this, 0, 0);
@@ -30,14 +29,13 @@ public class comboAero extends DefaultComboBoxModel implements VueGestionVol{
 
     @Override
     public Object getElementAt(int index) {
-        Object avion = null;
+        Object aeroport = null;
         if(index == 0){
-            avion = "Veuillez choisir un avion";
+            aeroport = "Veuillez choisir un avion";
         } else {
-            avion = nf.getListeAeroport().get(index-1).getLibAeroport();
+            aeroport = nf.getListeAeroport().get(index-1).getLibAeroport();
         }
-        
-        return avion; 
+        return aeroport; 
     }
 
     @Override

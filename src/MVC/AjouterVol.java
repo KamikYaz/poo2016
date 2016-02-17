@@ -22,7 +22,7 @@ public class AjouterVol extends javax.swing.JPanel {
 
     private NoyauFonctionnel nf;
     private TableVol tableVol;
-    private comboAero cbAvion;
+    private comboAero cbAero;
     private boolean tarifCorrect;
     private TarifDocumentListener tarifListener;
     //private dateADocumentListener tarifListener;
@@ -63,15 +63,15 @@ public class AjouterVol extends javax.swing.JPanel {
         tableVol.notifyFromModel(nf);
         tbl_Vol.setModel(tableVol);
 
-        cbAvion = new comboAero(nf);
-        nf.addView(cbAvion);
-        cbAvion.notifyFromModel(nf);
-        cb_AeroA.setModel(cbAvion);
+        cbAero = new comboAero(nf);
+        nf.addView(cbAero);
+        cbAero.notifyFromModel(nf);
+        cb_AeroA.setModel(cbAero);
 
-        cbAvion = new comboAero(nf);
-        nf.addView(cbAvion);
-        cbAvion.notifyFromModel(nf);
-        cb_AeroD.setModel(cbAvion);
+        cbAero = new comboAero(nf);
+        nf.addView(cbAero);
+        cbAero.notifyFromModel(nf);
+        cb_AeroD.setModel(cbAero);
 
         cb_AeroA.setSelectedIndex(0);
         cb_AeroD.setSelectedIndex(0);
@@ -98,6 +98,7 @@ public class AjouterVol extends javax.swing.JPanel {
     private void verifyAjouterEnable() {
         btn_AjouterVol.setEnabled(tarifCorrect);
     }
+
 
     private class TarifDocumentListener implements DocumentListener {
 
@@ -143,7 +144,6 @@ public class AjouterVol extends javax.swing.JPanel {
         }
     }
 
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -366,14 +366,14 @@ public class AjouterVol extends javax.swing.JPanel {
     private void btn_AjouterVolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AjouterVolActionPerformed
 
         float tarif = Float.valueOf(txt_Tarif.getText());
-        String heureD = spin_hd.getValue()+ ":" + spin_md.getValue();
-        String heureA = spin_ha.getValue()+ ":" + spin_ma.getValue();
+        String heureD = spin_hd.getValue() + ":" + spin_md.getValue();
+        String heureA = spin_ha.getValue() + ":" + spin_ma.getValue();
         nf.ajouterVol(txt_LibVol.getText(), txtf_DateD.getText(), txtf_DateA.getText(), heureD, heureA, tarif, String.valueOf(cb_AeroD.getSelectedItem()), String.valueOf(cb_AeroA.getSelectedItem()));
     }//GEN-LAST:event_btn_AjouterVolActionPerformed
 
     private void cb_AeroDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_AeroDActionPerformed
         // TODO add your handling code here:
-       
+
     }//GEN-LAST:event_cb_AeroDActionPerformed
 
 

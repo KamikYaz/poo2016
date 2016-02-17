@@ -274,7 +274,6 @@ public class NoyauFonctionnel {
     public void supprimerVol(String lib) {
         int i = chercherVol(lib);
         this.listeVol.remove(i);
-
     }
 
     //Fonction pour consulter un vol grâce a la redifinition de tostring
@@ -362,7 +361,6 @@ public class NoyauFonctionnel {
         } else {
             System.out.println("bug");
         }
-
     }
 
     //Retourne vrai si le personnel est dispo pour un vol donné faux sinon
@@ -595,11 +593,10 @@ public class NoyauFonctionnel {
     }
     
     //FOnction qui verifie l'heure
-    public boolean verifHeure(String heure, String minute){
+    public boolean verifHeure(String heure){
         boolean t;
         int h = Integer.parseInt(heure);
-        int m = Integer.parseInt(minute);
-        if(h < 0 && h >= 24 && m < 0 && m > 59){
+        if(h < 0 && h >= 24){
             t = false;
         }else{
             t = true;
