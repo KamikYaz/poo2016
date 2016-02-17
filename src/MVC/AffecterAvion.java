@@ -5,19 +5,35 @@
  */
 package MVC;
 
+import NoyauFonctionnel.NoyauFonctionnel;
+
 /**
  *
  * @author khaled
  */
 public class AffecterAvion extends javax.swing.JPanel {
-
+    
+    private NoyauFonctionnel nf;
+    private comboAvion cbAvion;
     /**
      * Creates new form AffecterAvion
      */
     public AffecterAvion() {
         initComponents();
+        chargerNF(new NoyauFonctionnel());
     }
-
+    
+    public void chargerNF(NoyauFonctionnel nf) {
+        this.nf = nf;
+        
+        cbAvion = new comboAvion(nf);
+        
+        nf.addView(cbAvion);
+        
+        cbAvion.notifyFromModel(nf);
+        
+        cb_avion.setModel(cbAvion);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,21 +43,41 @@ public class AffecterAvion extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        cb_avion = new javax.swing.JComboBox<>();
+
         setPreferredSize(new java.awt.Dimension(900, 450));
+
+        cb_avion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_avion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_avionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(138, 138, 138)
+                .addComponent(cb_avion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(706, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(87, 87, 87)
+                .addComponent(cb_avion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(343, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cb_avionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_avionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_avionActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cb_avion;
     // End of variables declaration//GEN-END:variables
 }
